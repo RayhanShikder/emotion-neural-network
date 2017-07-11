@@ -39,6 +39,7 @@ class Network(object):
         """Return the output of the network if ``a`` is input."""
         for b, w in zip(self.biases, self.weights):
             a = sigmoid(np.dot(w, a)+b)
+
         return a
 
     def SGD(self, training_data, epochs, mini_batch_size, eta,
@@ -134,6 +135,7 @@ class Network(object):
 #### Miscellaneous functions
 def sigmoid(z):
     """The sigmoid function."""
+    z=np.array(z,dtype=np.float32)
     return 1.0/(1.0+np.exp(-z))
 
 def sigmoid_prime(z):

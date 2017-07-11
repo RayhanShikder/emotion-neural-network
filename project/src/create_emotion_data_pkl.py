@@ -6,6 +6,7 @@ import numpy as np
 import pandas as pd
 import random
 
+
 def dir_to_dataset(glob_files):
     print("Gonna process:\n\t %s"%glob_files)
     dataset = []
@@ -16,7 +17,7 @@ def dir_to_dataset(glob_files):
     data = random.shuffle(data)
     data = np.array(data_old)
     for row in data:
-    	dataset.append(row[:21])
+    	dataset.append(row[:18])
     	labels.append(row[21])
    
     return np.array(dataset), np.array(labels)

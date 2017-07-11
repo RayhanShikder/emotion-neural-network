@@ -16,7 +16,7 @@ import gzip
 # Third-party libraries
 import numpy as np
 
-input_columns_size = 21
+input_columns_size = 18
 
 def load_data():
     """Return the MNIST data as a tuple containing the training data,
