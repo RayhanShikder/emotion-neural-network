@@ -16,6 +16,8 @@ import gzip
 # Third-party libraries
 import numpy as np
 
+input_columns_size = 21
+
 def load_data():
     """Return the MNIST data as a tuple containing the training data,
     the validation data, and the test data.
@@ -39,7 +41,7 @@ def load_data():
     That's done in the wrapper function ``load_data_wrapper()``, see
     below.
     """
-    f = gzip.open('../data/mnist.pkl.gz', 'rb')
+    f = gzip.open('../data/file.pkl.gz', 'rb')
     training_data, validation_data, test_data = cPickle.load(f)
     f.close()
     return (training_data, validation_data, test_data)
@@ -66,12 +68,12 @@ def load_data_wrapper():
     turn out to be the most convenient for use in our neural network
     code."""
     tr_d, va_d, te_d = load_data()
-    training_inputs = [np.reshape(x, (784, 1)) for x in tr_d[0]]
+    training_inputs = [np.reshape(x, (input_columns_size, 1)) for x in tr_d[0]]
     training_results = [vectorized_result(y) for y in tr_d[1]]
     training_data = zip(training_inputs, training_results)
-    validation_inputs = [np.reshape(x, (784, 1)) for x in va_d[0]]
+    validation_inputs = [np.reshape(x, (input_columns_size, 1)) for x in va_d[0]]
     validation_data = zip(validation_inputs, va_d[1])
-    test_inputs = [np.reshape(x, (784, 1)) for x in te_d[0]]
+    test_inputs = [np.reshape(x, (input_columns_size, 1)) for x in te_d[0]]
     test_data = zip(test_inputs, te_d[1])
     return (training_data, validation_data, test_data)
 
